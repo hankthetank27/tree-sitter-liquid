@@ -3,11 +3,15 @@
   "description": "liquid grammar for tree-sitter",
   "author": "derek stride",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "bindings/node",
   "keywords": [
+    "parser",
     "parsing",
-    "incremental"
+    "lexer",
+    "incremental",
+    "liquid",
+    "tree-sitter"
   ],
   "dependencies": {
     "nan": "2.18.0"
