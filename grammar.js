@@ -1,9 +1,3 @@
-const PRECS = {
-  primary: 1,
-  elsif: 1,
-  else: 2,
-}
-
 module.exports = grammar({
   name: "liquid",
 
@@ -396,7 +390,7 @@ module.exports = grammar({
     
     _iterator: ($) => 
       prec.left(
-        PRECS.primary, 
+        1,
         seq(
           field(
             "iterator", choice($.identifier, $.access, $.range)
@@ -409,7 +403,7 @@ module.exports = grammar({
 
     _page_iterator: ($) => 
       prec.left(
-        PRECS.primary,
+        1,
         seq(
           field(
             "iterator", choice($.identifier, $.access, $.number)
@@ -523,7 +517,7 @@ function statements($, rules) {
     ),
 
     _elsif: prec.dynamic(
-      PRECS.elsif,
+      1,
       seq(
         rules.wrapper("elsif", field("condition", $._expression)),
         alias(repeat(rules.node), $.block),
@@ -531,7 +525,7 @@ function statements($, rules) {
     ),
 
     _else: prec.dynamic(
-      PRECS.else,
+      2,
       seq(
         rules.wrapper("else"),
         alias(repeat(rules.node), $.block),
@@ -570,7 +564,7 @@ function statements($, rules) {
     ),
 
     _when: prec.dynamic(
-      PRECS.elsif,
+      1,
       seq(
         rules.wrapper(
           "when", 
