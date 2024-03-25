@@ -598,7 +598,7 @@ Javascript
 ---
 (program
  (javascript_statement
-  (template_content))
+  (js_content))
  (template_content))
 
 ==================
@@ -614,8 +614,8 @@ Schema
 ---
 (program
  (schema_statement
-  (template_content)
-  (template_content))
+  (json_content)
+  (json_content))
  (template_content))
 
 ==================
@@ -629,7 +629,7 @@ Style
 ---
 (program
   (style_statement
-   (template_content)
-   (template_content)
-   (template_content))
+   (style_content)
+   (style_content)
+   (style_content))
  (template_content))

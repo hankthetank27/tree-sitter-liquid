@@ -977,11 +977,21 @@
       "required": false,
       "types": [
         {
-          "type": "template_content",
+          "type": "js_content",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "js_content",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "json_content",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "layout_statement",
@@ -1620,7 +1630,7 @@
       "required": false,
       "types": [
         {
-          "type": "template_content",
+          "type": "json_content",
           "named": true
         }
       ]
@@ -1662,6 +1672,11 @@
     "fields": {}
   },
   {
+    "type": "style_content",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "style_statement",
     "named": true,
     "fields": {},
@@ -1670,139 +1685,7 @@
       "required": false,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "assignment_statement",
-          "named": true
-        },
-        {
-          "type": "boolean",
-          "named": true
-        },
-        {
-          "type": "break_statement",
-          "named": true
-        },
-        {
-          "type": "capture_statement",
-          "named": true
-        },
-        {
-          "type": "case_statement",
-          "named": true
-        },
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
-          "type": "continue_statement",
-          "named": true
-        },
-        {
-          "type": "cycle_statement",
-          "named": true
-        },
-        {
-          "type": "decrement_statement",
-          "named": true
-        },
-        {
-          "type": "echo_statement",
-          "named": true
-        },
-        {
-          "type": "filter",
-          "named": true
-        },
-        {
-          "type": "for_loop_statement",
-          "named": true
-        },
-        {
-          "type": "form_statement",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "if_statement",
-          "named": true
-        },
-        {
-          "type": "include_statement",
-          "named": true
-        },
-        {
-          "type": "increment_statement",
-          "named": true
-        },
-        {
-          "type": "javascript_statement",
-          "named": true
-        },
-        {
-          "type": "layout_statement",
-          "named": true
-        },
-        {
-          "type": "liquid_tag",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "paginate_statement",
-          "named": true
-        },
-        {
-          "type": "predicate",
-          "named": true
-        },
-        {
-          "type": "raw_statement",
-          "named": true
-        },
-        {
-          "type": "render_statement",
-          "named": true
-        },
-        {
-          "type": "schema_statement",
-          "named": true
-        },
-        {
-          "type": "section_statement",
-          "named": true
-        },
-        {
-          "type": "sections_statement",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "style_statement",
-          "named": true
-        },
-        {
-          "type": "tablerow_statement",
-          "named": true
-        },
-        {
-          "type": "template_content",
-          "named": true
-        },
-        {
-          "type": "unless_statement",
+          "type": "style_content",
           "named": true
         }
       ]

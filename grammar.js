@@ -420,21 +420,21 @@ module.exports = grammar({
     schema_statement: ($) =>
       seq(
         tag("schema"),
-        repeat($.template_content),
+        repeat(alias($.template_content, $.json_content)),
         tag("endschema"), 
       ),
 
     style_statement: ($) =>
       seq(
         tag("style"),
-        repeat($._node),
+        repeat(alias($.template_content, $.style_content)),
         tag("endstyle"), 
       ),
 
     javascript_statement: ($) =>
       seq(
         tag("javascript"),
-        repeat($.template_content),
+        repeat(alias($.template_content, $.js_content)),
         tag("endjavascript"), 
       ),
 
@@ -445,7 +445,6 @@ module.exports = grammar({
         optional($.raw_statement),
         tag("endraw"), 
       ),
-
 
     comment: ($) => 
       choice($._inline_comment, $._paired_comment),
