@@ -623,7 +623,7 @@ Style
 ==================
 
 {% style %}
-  .el{ display: flex: }
+  .el{ display: flex; }
 {% endstyle %}
 
 ---

@@ -440,10 +440,10 @@ module.exports = grammar({
 
     raw_statement: ($) =>
       seq(
-        tag("raw"),
+        concealed_tag("raw"),
         $.raw_content,
         optional($.raw_statement),
-        tag("endraw"), 
+        concealed_tag("endraw"), 
       ),
 
     comment: ($) => 
@@ -460,10 +460,10 @@ module.exports = grammar({
 
     _paired_comment: ($) =>
       seq(
-        tag("comment"),
+        concealed_tag("comment"),
         $._paired_comment_content,
         optional($._paired_comment),
-        tag("endcomment")
+        concealed_tag("endcomment")
       ),
 
     _paired_comment_liq: ($) =>
@@ -663,6 +663,20 @@ function output(...rules) {
     choice("{{", "{{-"),
     ...rules,
     choice("}}", "-}}"),
+  )
+}
+
+function concealed_tag(...rules) {
+  return seq(
+    choice(
+      alias("{%", ""), 
+      alias("{%-", "")
+    ),
+    ...rules,
+    choice(
+      alias("%}", ""), 
+      alias("-%}", "")
+    ),
   )
 }
 
