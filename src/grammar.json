@@ -3886,22 +3886,12 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "STRING",
-                    "value": "{%"
-                  },
-                  "named": false,
-                  "value": ""
+                  "type": "STRING",
+                  "value": "{%"
                 },
                 {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "STRING",
-                    "value": "{%-"
-                  },
-                  "named": false,
-                  "value": ""
+                  "type": "STRING",
+                  "value": "{%-"
                 }
               ]
             },
@@ -3913,22 +3903,12 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "STRING",
-                    "value": "%}"
-                  },
-                  "named": false,
-                  "value": ""
+                  "type": "STRING",
+                  "value": "%}"
                 },
                 {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "STRING",
-                    "value": "-%}"
-                  },
-                  "named": false,
-                  "value": ""
+                  "type": "STRING",
+                  "value": "-%}"
                 }
               ]
             }
@@ -3957,22 +3937,12 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "STRING",
-                    "value": "{%"
-                  },
-                  "named": false,
-                  "value": ""
+                  "type": "STRING",
+                  "value": "{%"
                 },
                 {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "STRING",
-                    "value": "{%-"
-                  },
-                  "named": false,
-                  "value": ""
+                  "type": "STRING",
+                  "value": "{%-"
                 }
               ]
             },
@@ -3984,22 +3954,12 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "STRING",
-                    "value": "%}"
-                  },
-                  "named": false,
-                  "value": ""
+                  "type": "STRING",
+                  "value": "%}"
                 },
                 {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "STRING",
-                    "value": "-%}"
-                  },
-                  "named": false,
-                  "value": ""
+                  "type": "STRING",
+                  "value": "-%}"
                 }
               ]
             }

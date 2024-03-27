@@ -440,10 +440,10 @@ module.exports = grammar({
 
     raw_statement: ($) =>
       seq(
-        concealed_tag("raw"),
+        tag("raw"),
         $.raw_content,
         optional($.raw_statement),
-        concealed_tag("endraw"), 
+        tag("endraw"), 
       ),
 
     comment: ($) => 
