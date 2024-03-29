@@ -592,13 +592,20 @@ Javascript
 ==================
 
 {% javascript %}
+  {% comment %}
+    js is cool
+  {% endcomment %}
   let x = 10;
+  let y = x + x;
+  {% comment %} ! {% endcomment %}
 {% endjavascript %}
 
 ---
 (program
  (javascript_statement
-  (js_content))
+  (comment)
+  (js_content)
+  (comment))
  (template_content))
 
 ==================
@@ -633,3 +640,26 @@ Style
    (style_content)
    (style_content))
  (template_content))
+
+==================
+Style with Liquid
+==================
+
+{% style %}
+  .el{ 
+    display: {{ something.style }}; 
+    font-size: 14;
+  }
+{% endstyle %}
+
+---
+(program                                                                                                                                                                                 
+  (style_statement                                                                                                                                                                       
+    (style_content)                                                                                                                                                                      
+    (style_content)                                                                                                                                                                      
+    (style_content)                                                                                                                                                                      
+    (access                                                                                                                                                                              
+      (identifier)                                                                                                                                                                       
+      (identifier))                                                                                                                                                                      
+    (style_content))                                                                                                                                                                     
+  (template_content))
