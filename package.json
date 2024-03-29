@@ -1,7 +1,10 @@
 {
   "name": "tree-sitter-liquid",
   "description": "liquid grammar for tree-sitter",
-  "author": "derek stride",
+  "author": [
+    "derek stride",
+    "hank jackson"
+  ],
   "license": "MIT",
   "version": "0.1.0",
   "main": "bindings/node",
@@ -17,10 +20,13 @@
     "nan": "2.18.0"
   },
   "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-google": "^0.14.0",
     "tree-sitter-cli": "0.20.8"
   },
   "scripts": {
-    "pretest": "tree-sitter generate",
-    "test": "tree-sitter test"
+    "build": "tree-sitter generate",
+    "test": "tree-sitter test",
+    "lint": "eslint grammar.js"
   }
 }
