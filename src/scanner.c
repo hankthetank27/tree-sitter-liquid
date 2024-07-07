@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <tree_sitter/parser.h>
+#include "tree_sitter/parser.h"
 #include <wctype.h>
 
 enum TokenType { 
@@ -24,7 +24,7 @@ static void advance_ws(TSLexer *lexer) {
   }
 }
 
-bool scan_str(TSLexer *lexer, const char *str) {
+static bool scan_str(TSLexer *lexer, const char *str) {
   for (int i = 0; str[i] != '\0'; i++) {
     if (lexer->lookahead == str[i]) {
       advance(lexer);
@@ -35,7 +35,7 @@ bool scan_str(TSLexer *lexer, const char *str) {
   return true;
 }
 
-bool is_next_and_advance(TSLexer *lexer, char c) {
+static bool is_next_and_advance(TSLexer *lexer, char c) {
   bool is_next = lexer->lookahead == c;
   advance(lexer);
   return is_next;
