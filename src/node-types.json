@@ -321,11 +321,6 @@
     "fields": {}
   },
   {
-    "type": "break_statement",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "capture_statement",
     "named": true,
     "fields": {
@@ -393,11 +388,6 @@
   },
   {
     "type": "comment",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "continue_statement",
     "named": true,
     "fields": {}
   },
@@ -2105,8 +2095,8 @@
     "named": false
   },
   {
-    "type": "break",
-    "named": false
+    "type": "break_statement",
+    "named": true
   },
   {
     "type": "by",
@@ -2129,8 +2119,8 @@
     "named": false
   },
   {
-    "type": "continue",
-    "named": false
+    "type": "continue_statement",
+    "named": true
   },
   {
     "type": "cycle",

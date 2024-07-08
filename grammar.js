@@ -10,9 +10,6 @@ module.exports = grammar({
     [$.else_clause],
     [$.elsif_clause],
     [$.when_clause],
-    [$._else_liq],
-    [$._elsif_liq],
-    [$._when_liq],
   ],
 
   externals: ($) => [
@@ -206,9 +203,9 @@ module.exports = grammar({
     // Unpaired Statements //
     // ///////////////////////
 
-    break_statement: (_) => choice('break'),
+    break_statement: (_) => 'break',
 
-    continue_statement: (_) => choice('continue'),
+    continue_statement: (_) => 'continue',
 
     echo_statement: ($) => seq('echo', $._expression),
 
@@ -491,6 +488,13 @@ module.exports = grammar({
   },
 });
 
+function seq_or_one(...args) {
+  if (args.length === 1) {
+    return args[0];
+  } else {
+    return seq(...args);
+  }
+};
 
 function paired($) {
   return {
@@ -507,7 +511,7 @@ function paired($) {
       else: $._else_aliased,
       elsif: $._elsif_aliased,
       when: $._when_aliased,
-      wrapper: seq,
+      wrapper: seq_or_one,
     }),
   };
 }

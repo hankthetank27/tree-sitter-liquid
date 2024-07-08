@@ -981,22 +981,12 @@
       ]
     },
     "break_statement": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "break"
-        }
-      ]
+      "type": "STRING",
+      "value": "break"
     },
     "continue_statement": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "continue"
-        }
-      ]
+      "type": "STRING",
+      "value": "continue"
     },
     "echo_statement": {
       "type": "SEQ",
@@ -2856,13 +2846,8 @@
           "type": "PREC_RIGHT",
           "value": 0,
           "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "endif"
-              }
-            ]
+            "type": "STRING",
+            "value": "endif"
           }
         }
       ]
@@ -2912,13 +2897,8 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "else"
-              }
-            ]
+            "type": "STRING",
+            "value": "else"
           },
           {
             "type": "ALIAS",
@@ -2999,13 +2979,8 @@
           "type": "PREC_RIGHT",
           "value": 0,
           "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "endfor"
-              }
-            ]
+            "type": "STRING",
+            "value": "endfor"
           }
         }
       ]
@@ -3075,13 +3050,8 @@
           "type": "PREC_RIGHT",
           "value": 0,
           "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "endcase"
-              }
-            ]
+            "type": "STRING",
+            "value": "endcase"
           }
         }
       ]
@@ -3204,13 +3174,8 @@
           "type": "PREC_RIGHT",
           "value": 0,
           "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "endunless"
-              }
-            ]
+            "type": "STRING",
+            "value": "endunless"
           }
         }
       ]
@@ -3255,13 +3220,8 @@
           "type": "PREC_RIGHT",
           "value": 0,
           "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "endcapture"
-              }
-            ]
+            "type": "STRING",
+            "value": "endcapture"
           }
         }
       ]
@@ -3332,13 +3292,8 @@
           }
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "endform"
-            }
-          ]
+          "type": "STRING",
+          "value": "endform"
         }
       ]
     },
@@ -3390,13 +3345,8 @@
           "type": "PREC_RIGHT",
           "value": 0,
           "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "endtablerow"
-              }
-            ]
+            "type": "STRING",
+            "value": "endtablerow"
           }
         }
       ]
@@ -3458,13 +3408,8 @@
           "type": "PREC_RIGHT",
           "value": 0,
           "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "endpaginate"
-              }
-            ]
+            "type": "STRING",
+            "value": "endpaginate"
           }
         }
       ]
@@ -4229,15 +4174,6 @@
     ],
     [
       "when_clause"
-    ],
-    [
-      "_else_liq"
-    ],
-    [
-      "_elsif_liq"
-    ],
-    [
-      "_when_liq"
     ]
   ],
   "precedences": [
@@ -4305,4 +4241,3 @@
   "inline": [],
   "supertypes": []
 }
-

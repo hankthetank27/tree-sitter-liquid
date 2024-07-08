@@ -29,11 +29,11 @@
 ([
   "as"
   "assign"
-  "break"
+  (break_statement)
   "by"
   "capture"
   "case"
-  "continue"
+  (continue_statement)
   "cycle"
   "decrement"
   "echo"
