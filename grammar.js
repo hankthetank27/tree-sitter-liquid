@@ -10,6 +10,7 @@ module.exports = grammar({
     [$.else_clause],
     [$.elsif_clause],
     [$.when_clause],
+    [$.custom_unpaired_statement, $._expression],
   ],
 
   externals: ($) => [
@@ -110,6 +111,7 @@ module.exports = grammar({
         $.cycle_statement,
         $.break_statement,
         $.continue_statement,
+        $.custom_unpaired_statement,
       ),
 
     _tagged_paired_statment: ($) =>
@@ -126,6 +128,7 @@ module.exports = grammar({
         $.raw_statement,
         $.style_statement,
         $.javascript_statement,
+        // $.custom_paired_statement,
       ),
 
     _untagged_paired_statement: ($) =>
@@ -209,7 +212,7 @@ module.exports = grammar({
 
     echo_statement: ($) => seq('echo', $._expression),
 
-    include_statement: ($) => seq('include', $.string),
+    include_statement: ($) => seq('include', $._expression),
 
     section_statement: ($) => seq('section', $.string),
 
@@ -220,6 +223,12 @@ module.exports = grammar({
     decrement_statement: ($) => seq('decrement', $.identifier),
 
     layout_statement: ($) => seq('layout', choice($.string, 'none')),
+
+    custom_unpaired_statement: ($) =>
+      seq(
+        alias($.identifier, 'keyword'),
+        optional($._expression)
+      ),
 
     assignment_statement: ($) =>
       seq(
@@ -354,6 +363,8 @@ module.exports = grammar({
     tablerow_statement: ($) => paired($).tagged._tablerow,
 
     paginate_statement: ($) => paired($).tagged._paginate,
+
+    custom_paired_statement: ($) => paired($).tagged._custom,
 
 
     // untagged
@@ -665,6 +676,14 @@ function statements($, rules) {
 
       rules.wrapper('endform'),
     ),
+
+    _custom: seq(
+      rules.wrapper($.identifier, optional($._expression)),
+
+      field('body', alias(repeat(rules.node), $.block)),
+
+      rules.wrapper(/end[a-zA-Z][0-9a-zA-Z_\?-]*/),
+    )
   };
 }
 

@@ -205,6 +205,10 @@
           "named": true
         },
         {
+          "type": "custom_unpaired_statement",
+          "named": true
+        },
+        {
           "type": "cycle_statement",
           "named": true
         },
@@ -390,6 +394,45 @@
     "type": "comment",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "custom_unpaired_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "access",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "filter",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "predicate",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "cycle_statement",
@@ -758,6 +801,10 @@
           "named": true
         },
         {
+          "type": "custom_unpaired_statement",
+          "named": true
+        },
+        {
           "type": "cycle_statement",
           "named": true
         },
@@ -937,6 +984,30 @@
       "required": true,
       "types": [
         {
+          "type": "access",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "filter",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "predicate",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         }
@@ -1040,6 +1111,10 @@
         },
         {
           "type": "continue_statement",
+          "named": true
+        },
+        {
+          "type": "custom_unpaired_statement",
           "named": true
         },
         {
@@ -1369,6 +1444,10 @@
         },
         {
           "type": "continue_statement",
+          "named": true
+        },
+        {
+          "type": "custom_unpaired_statement",
           "named": true
         },
         {
@@ -1708,6 +1787,10 @@
         },
         {
           "type": "continue_statement",
+          "named": true
+        },
+        {
+          "type": "custom_unpaired_statement",
           "named": true
         },
         {
@@ -2228,6 +2311,10 @@
   },
   {
     "type": "javascript",
+    "named": false
+  },
+  {
+    "type": "keyword",
     "named": false
   },
   {
