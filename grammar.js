@@ -150,6 +150,7 @@ module.exports = grammar({
         $.identifier,
         $.predicate,
         $.access,
+        output($._expression),
       ),
 
 
@@ -212,8 +213,6 @@ module.exports = grammar({
 
     echo_statement: ($) => seq('echo', $._expression),
 
-    include_statement: ($) => seq('include', $._expression),
-
     section_statement: ($) => seq('section', $.string),
 
     sections_statement: ($) => seq('sections', $.string),
@@ -226,8 +225,8 @@ module.exports = grammar({
 
     custom_unpaired_statement: ($) =>
       seq(
-        alias($.identifier, 'keyword'),
-        optional($._expression)
+        alias($.identifier, 'custom_keyword'),
+        repeat($._expression),
       ),
 
     assignment_statement: ($) =>
@@ -253,6 +252,29 @@ module.exports = grammar({
             ),
           ),
         ),
+      ),
+
+    include_statement: ($) =>
+      seq(
+        choice(
+          'include',
+          'include_relative',
+        ),
+        choice(
+          $.string,
+          output($._expression),
+          alias(/[^\s\{]*(\{[^\s\{])*[^\s\{]+/, $.string),
+        ),
+        repeat(
+          $._include_param,
+        ),
+      ),
+
+    _include_param: ($) =>
+      seq(
+        $.identifier,
+        token.immediate('='),
+        $._expression,
       ),
 
     render_statement: ($) =>
@@ -678,12 +700,17 @@ function statements($, rules) {
     ),
 
     _custom: seq(
-      rules.wrapper($.identifier, optional($._expression)),
+      rules.wrapper(
+        $.identifier,
+        optional($._expression),
+      ),
 
       field('body', alias(repeat(rules.node), $.block)),
 
-      rules.wrapper(/end[a-zA-Z][0-9a-zA-Z_\?-]*/),
-    )
+      rules.wrapper(
+        $.identifier,
+      ),
+    ),
   };
 }
 

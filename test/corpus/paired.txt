@@ -1,5 +1,5 @@
 ==================
-If 
+If
 ==================
 
 <html>
@@ -67,13 +67,13 @@ If Elsif Else
   (program
    (template_content)
    (if_statement
-    condition: (predicate 
+    condition: (predicate
       left: (identifier)
       right: (string))
-    consequence: (block 
+    consequence: (block
       (template_content)
-      (access 
-       receiver: (identifier) 
+      (access
+       receiver: (identifier)
        property: (identifier))
       (template_content)
       (access
@@ -118,18 +118,18 @@ Unless
   (program
    (template_content)
    (unless_statement
-    condition: 
-    (access 
+    condition:
+    (access
      receiver: (identifier)
      property: (identifier))
-    consequence: (block 
+    consequence: (block
       (assignment_statement
        variable_name: (identifier)
-       value: 
+       value:
        (access
         receiver: (identifier)
         property: (identifier)))
-      (template_content) 
+      (template_content)
       (identifier)
       (template_content)))
    (template_content))
@@ -163,7 +163,7 @@ Case
     receiver: (access
       receiver: (identifier)
       property: (identifier))
-    conditions: (block 
+    conditions: (block
       (when_clause
        condition: (predicate
          left: (string)
@@ -179,14 +179,14 @@ Case
           property: (identifier))
          (template_content)))
       (when_clause
-       condition: (argument_list 
+       condition: (argument_list
          (string))
        consequence: (block
          (render_statement
           file: (string))
          (template_content)))
       (when_clause
-       condition: (argument_list 
+       condition: (argument_list
          (string)
          (string)
          (string))
@@ -418,7 +418,7 @@ Nested For / If
     iterator: (identifier)
     body: (block
       (if_statement
-       condition: 
+       condition:
        (predicate
         left: (identifier)
         right: (identifier))
@@ -551,15 +551,16 @@ Form with argument
   content
 {% endform %}
 
----   
+---
 (program
-  (form_statement
-   type: (string)
-   (argument_list
+ (form_statement
+  type: (string)
+  parameters: (argument_list
     (argument
-     (identifier)
-     (identifier)))
-   (template_content)))
+     key: (identifier)
+     value: (identifier)))
+  (template_content))
+ (template_content))
 
 ==================
 Form with many arguments
@@ -646,20 +647,42 @@ Style with Liquid
 ==================
 
 {% style %}
-  .el{ 
-    display: {{ something.style }}; 
+  .el{
+    display: {{ something.style }};
     font-size: 14;
   }
 {% endstyle %}
 
 ---
-(program                                                                                                                                                                                 
-  (style_statement                                                                                                                                                                       
-    (style_content)                                                                                                                                                                      
-    (style_content)                                                                                                                                                                      
-    (style_content)                                                                                                                                                                      
-    (access                                                                                                                                                                              
-      (identifier)                                                                                                                                                                       
-      (identifier))                                                                                                                                                                      
-    (style_content))                                                                                                                                                                     
+(program
+  (style_statement
+    (style_content)
+    (style_content)
+    (style_content)
+    (access
+      (identifier)
+      (identifier))
+    (style_content))
   (template_content))
+
+==================
+If with Nested Output in Include
+==================
+
+{% if page.my_variable %}
+  {% include {{ page.my_variable }} %}
+{% endif %}
+
+---
+(program
+ (if_statement
+  condition: (access
+    receiver: (identifier)
+    property: (identifier))
+  consequence: (block
+    (include_statement
+     (access
+      receiver: (identifier)
+      property: (identifier)))))
+ (template_content))
+

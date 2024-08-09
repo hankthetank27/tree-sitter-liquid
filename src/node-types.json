@@ -119,9 +119,13 @@
     "named": true,
     "fields": {
       "value": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "-}}",
+            "named": false
+          },
           {
             "type": "access",
             "named": true
@@ -149,6 +153,18 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
           }
         ]
       },
@@ -400,7 +416,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
@@ -554,9 +570,13 @@
     "named": true,
     "fields": {
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "-}}",
+            "named": false
+          },
           {
             "type": "access",
             "named": true
@@ -584,6 +604,18 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
           }
         ]
       }
@@ -604,9 +636,13 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "-}}",
+            "named": false
+          },
           {
             "type": "access",
             "named": true
@@ -634,6 +670,18 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
           }
         ]
       },
@@ -930,9 +978,13 @@
         ]
       },
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "-}}",
+            "named": false
+          },
           {
             "type": "access",
             "named": true
@@ -960,6 +1012,18 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
           }
         ]
       },
@@ -980,7 +1044,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -1271,9 +1335,13 @@
     "named": true,
     "fields": {
       "left": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "-}}",
+            "named": false
+          },
           {
             "type": "access",
             "named": true
@@ -1301,6 +1369,18 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
           }
         ]
       },
@@ -1371,9 +1451,13 @@
         ]
       },
       "right": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "-}}",
+            "named": false
+          },
           {
             "type": "access",
             "named": true
@@ -1401,6 +1485,18 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
           }
         ]
       }
@@ -1982,9 +2078,13 @@
         ]
       },
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "-}}",
+            "named": false
+          },
           {
             "type": "access",
             "named": true
@@ -2012,6 +2112,18 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
           }
         ]
       },
@@ -2206,6 +2318,10 @@
     "named": true
   },
   {
+    "type": "custom_keyword",
+    "named": false
+  },
+  {
     "type": "cycle",
     "named": false
   },
@@ -2306,15 +2422,15 @@
     "named": false
   },
   {
+    "type": "include_relative",
+    "named": false
+  },
+  {
     "type": "increment",
     "named": false
   },
   {
     "type": "javascript",
-    "named": false
-  },
-  {
-    "type": "keyword",
     "named": false
   },
   {

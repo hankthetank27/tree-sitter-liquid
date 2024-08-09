@@ -271,3 +271,52 @@ Custom Tag
       (string))
     (template_content))
 
+==================
+Include Jeykll
+==================
+
+{% include dir/note.html content="This is my sample note." file=download_note %}
+
+---
+(program
+ (include_statement
+  (string)
+  (identifier)
+  (string)
+  (identifier)
+  (identifier))
+ (template_content))
+
+==================
+Include Jeykll with Variable
+==================
+
+{% include {{ some.file }} content="This is my sample note." file=download_note %}
+
+---
+(program
+ (include_statement
+  (access
+   (identifier)
+   (identifier))
+  (identifier)
+  (string)
+  (identifier)
+  (identifier))
+ (template_content))
+
+==================
+Include Jeykll with bracket
+==================
+
+{% include {dir/{note.html} content="This is my sample note." file=download_note %}
+
+---
+(program
+ (include_statement
+  (string)
+  (identifier)
+  (string)
+  (identifier)
+  (identifier))
+ (template_content))
