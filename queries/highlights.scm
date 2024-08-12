@@ -7,7 +7,7 @@
   "%}"
   "{%-"
   "-%}"
-  ] @tag.delimiter 
+  ] @tag.delimiter
  (#set! priority 101))
 
 
@@ -16,13 +16,13 @@
   "["
   ")"
   "("
-  ] @punctuation.bracket 
+  ] @punctuation.bracket
  (#set! priority 101))
 
 ([
   ","
   "."
-  ] @punctuation.delimiter 
+  ] @punctuation.delimiter
  (#set! priority 101))
 
 
@@ -34,6 +34,7 @@
   "capture"
   "case"
   (continue_statement)
+  (custom_unpaired_statement)
   "cycle"
   "decrement"
   "echo"
@@ -70,7 +71,7 @@
   "unless"
   "when"
   "with"
-  ] @keyword 
+  ] @keyword
  (#set! priority 101))
 
 ([
@@ -86,7 +87,7 @@
   ":"
   "="
   (predicate)
-  ] @operator 
+  ] @operator
  (#set! priority 101))
 
 ((identifier) @variable (#set! priority 101))

@@ -89,7 +89,7 @@ Liquid Tag with Case
      receiver: (identifier)
      conditions: (block
        (when_clause
-        condition: (argument_list 
+        condition: (argument_list
           (string))
         consequence: (block
           (assignment_statement
@@ -100,7 +100,7 @@ Liquid Tag with Case
             body: (identifier)
             name: (identifier)))))
        (when_clause
-        condition: (argument_list 
+        condition: (argument_list
           (string))
         consequence: (block
           (assignment_statement
@@ -247,7 +247,7 @@ Liquid Tag with Paginate
 
 <html>
   {% liquid
-    paginate collection.products by 3, window_size: 1 
+    paginate collection.products by 3, window_size: 1
       echo "content"
     endpaginate
   %}
@@ -270,3 +270,37 @@ Liquid Tag with Paginate
        (echo_statement
         (string)))))
    (template_content))
+
+==================
+Liquid Custom Tag
+==================
+
+<html>
+  {% liquid
+    paginate collection.products by 3, window_size: 1
+      custom 'filename'
+      echo 'thing'
+    endpaginate
+  %}
+</html>
+
+---
+  (program
+   (template_content)
+    (liquid_tag
+     (paginate_statement
+      (access
+       (identifier)
+       (identifier))
+      (number)
+      (argument_list
+       (argument
+        (identifier)
+        (number)))
+      (block
+       (custom_unpaired_statement
+        (string))
+       (echo_statement
+        (string)))))
+   (template_content))
+

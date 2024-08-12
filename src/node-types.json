@@ -119,9 +119,13 @@
     "named": true,
     "fields": {
       "value": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "-}}",
+            "named": false
+          },
           {
             "type": "access",
             "named": true
@@ -149,6 +153,18 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
           }
         ]
       },
@@ -202,6 +218,10 @@
         },
         {
           "type": "continue_statement",
+          "named": true
+        },
+        {
+          "type": "custom_unpaired_statement",
           "named": true
         },
         {
@@ -392,6 +412,45 @@
     "fields": {}
   },
   {
+    "type": "custom_unpaired_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "access",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "filter",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "predicate",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "cycle_statement",
     "named": true,
     "fields": {
@@ -511,9 +570,13 @@
     "named": true,
     "fields": {
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "-}}",
+            "named": false
+          },
           {
             "type": "access",
             "named": true
@@ -541,6 +604,18 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
           }
         ]
       }
@@ -561,9 +636,13 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "-}}",
+            "named": false
+          },
           {
             "type": "access",
             "named": true
@@ -591,6 +670,18 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
           }
         ]
       },
@@ -758,6 +849,10 @@
           "named": true
         },
         {
+          "type": "custom_unpaired_statement",
+          "named": true
+        },
+        {
           "type": "cycle_statement",
           "named": true
         },
@@ -883,9 +978,13 @@
         ]
       },
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "-}}",
+            "named": false
+          },
           {
             "type": "access",
             "named": true
@@ -913,6 +1012,18 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
           }
         ]
       },
@@ -933,9 +1044,33 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "access",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "filter",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "predicate",
+          "named": true
+        },
         {
           "type": "string",
           "named": true
@@ -1040,6 +1175,10 @@
         },
         {
           "type": "continue_statement",
+          "named": true
+        },
+        {
+          "type": "custom_unpaired_statement",
           "named": true
         },
         {
@@ -1196,9 +1335,13 @@
     "named": true,
     "fields": {
       "left": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "-}}",
+            "named": false
+          },
           {
             "type": "access",
             "named": true
@@ -1226,6 +1369,18 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
           }
         ]
       },
@@ -1296,9 +1451,13 @@
         ]
       },
       "right": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "-}}",
+            "named": false
+          },
           {
             "type": "access",
             "named": true
@@ -1326,6 +1485,18 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
           }
         ]
       }
@@ -1369,6 +1540,10 @@
         },
         {
           "type": "continue_statement",
+          "named": true
+        },
+        {
+          "type": "custom_unpaired_statement",
           "named": true
         },
         {
@@ -1711,6 +1886,10 @@
           "named": true
         },
         {
+          "type": "custom_unpaired_statement",
+          "named": true
+        },
+        {
           "type": "cycle_statement",
           "named": true
         },
@@ -1899,9 +2078,13 @@
         ]
       },
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "-}}",
+            "named": false
+          },
           {
             "type": "access",
             "named": true
@@ -1929,6 +2112,18 @@
           {
             "type": "string",
             "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
           }
         ]
       },
@@ -2123,6 +2318,10 @@
     "named": true
   },
   {
+    "type": "custom_keyword",
+    "named": false
+  },
+  {
     "type": "cycle",
     "named": false
   },
@@ -2220,6 +2419,10 @@
   },
   {
     "type": "include",
+    "named": false
+  },
+  {
+    "type": "include_relative",
     "named": false
   },
   {

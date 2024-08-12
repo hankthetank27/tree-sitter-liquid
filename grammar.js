@@ -10,6 +10,7 @@ module.exports = grammar({
     [$.else_clause],
     [$.elsif_clause],
     [$.when_clause],
+    [$.custom_unpaired_statement, $._expression],
   ],
 
   externals: ($) => [
@@ -110,6 +111,7 @@ module.exports = grammar({
         $.cycle_statement,
         $.break_statement,
         $.continue_statement,
+        $.custom_unpaired_statement,
       ),
 
     _tagged_paired_statment: ($) =>
@@ -126,6 +128,7 @@ module.exports = grammar({
         $.raw_statement,
         $.style_statement,
         $.javascript_statement,
+        // $.custom_paired_statement,
       ),
 
     _untagged_paired_statement: ($) =>
@@ -147,6 +150,7 @@ module.exports = grammar({
         $.identifier,
         $.predicate,
         $.access,
+        output($._expression),
       ),
 
 
@@ -209,8 +213,6 @@ module.exports = grammar({
 
     echo_statement: ($) => seq('echo', $._expression),
 
-    include_statement: ($) => seq('include', $.string),
-
     section_statement: ($) => seq('section', $.string),
 
     sections_statement: ($) => seq('sections', $.string),
@@ -220,6 +222,12 @@ module.exports = grammar({
     decrement_statement: ($) => seq('decrement', $.identifier),
 
     layout_statement: ($) => seq('layout', choice($.string, 'none')),
+
+    custom_unpaired_statement: ($) =>
+      seq(
+        alias($.identifier, 'custom_keyword'),
+        repeat($._expression),
+      ),
 
     assignment_statement: ($) =>
       seq(
@@ -244,6 +252,33 @@ module.exports = grammar({
             ),
           ),
         ),
+      ),
+
+    include_statement: ($) =>
+      seq(
+        choice(
+          'include',
+          'include_relative',
+        ),
+        choice(
+          $.string,
+          output($._expression),
+          alias(
+            // match any sequence of non-whitespace charaters that does not contain "{{" or "{%"
+            /(\{[^{%\s][^{\s]*|[^{\s]+)(?:\{[^{%\s][^{\s]*)*/,
+            $.string,
+          ),
+        ),
+        repeat(
+          $._include_param,
+        ),
+      ),
+
+    _include_param: ($) =>
+      seq(
+        $.identifier,
+        token.immediate('='),
+        $._expression,
       ),
 
     render_statement: ($) =>
@@ -354,6 +389,8 @@ module.exports = grammar({
     tablerow_statement: ($) => paired($).tagged._tablerow,
 
     paginate_statement: ($) => paired($).tagged._paginate,
+
+    custom_paired_statement: ($) => paired($).tagged._custom,
 
 
     // untagged
@@ -664,6 +701,19 @@ function statements($, rules) {
       repeat(rules.node),
 
       rules.wrapper('endform'),
+    ),
+
+    _custom: seq(
+      rules.wrapper(
+        $.identifier,
+        optional($._expression),
+      ),
+
+      field('body', alias(repeat(rules.node), $.block)),
+
+      rules.wrapper(
+        $.identifier,
+      ),
     ),
   };
 }
