@@ -56,6 +56,7 @@
   "form"
   "if"
   "include"
+  "include_relative"
   "increment"
   "javascript"
   "layout"
