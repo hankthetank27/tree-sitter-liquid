@@ -263,7 +263,11 @@ module.exports = grammar({
         choice(
           $.string,
           output($._expression),
-          alias(/[^\s\{]*(\{[^\s\{])*[^\s\{]+/, $.string),
+          alias(
+            // match any sequence of non-whitespace charaters that does not contain "{{" or "{%"
+            /(\{[^{%\s][^{\s]*|[^{\s]+)(?:\{[^{%\s][^{\s]*)*/,
+            $.string
+          ),
         ),
         repeat(
           $._include_param,
