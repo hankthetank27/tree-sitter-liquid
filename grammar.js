@@ -128,7 +128,6 @@ module.exports = grammar({
         $.raw_statement,
         $.style_statement,
         $.javascript_statement,
-        // $.custom_paired_statement,
       ),
 
     _untagged_paired_statement: ($) =>
@@ -389,9 +388,6 @@ module.exports = grammar({
     tablerow_statement: ($) => paired($).tagged._tablerow,
 
     paginate_statement: ($) => paired($).tagged._paginate,
-
-    custom_paired_statement: ($) => paired($).tagged._custom,
-
 
     // untagged
     _if_liq: ($) => paired($).untagged._if,
@@ -701,19 +697,6 @@ function statements($, rules) {
       repeat(rules.node),
 
       rules.wrapper('endform'),
-    ),
-
-    _custom: seq(
-      rules.wrapper(
-        $.identifier,
-        optional($._expression),
-      ),
-
-      field('body', alias(repeat(rules.node), $.block)),
-
-      rules.wrapper(
-        $.identifier,
-      ),
     ),
   };
 }
