@@ -266,7 +266,7 @@ module.exports = grammar({
           alias(
             // match any sequence of non-whitespace charaters that does not contain "{{" or "{%"
             /(\{[^{%\s][^{\s]*|[^{\s]+)(?:\{[^{%\s][^{\s]*)*/,
-            $.string
+            $.string,
           ),
         ),
         repeat(
