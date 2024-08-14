@@ -30,6 +30,24 @@ local liquid_injections = [[
      (#set-lang-by-filetype! "css.liquid" "css")
      (#set-lang-by-filetype! "scss.liquid" "scss")
      (#set! injection.combined))
+
+     (javascript_statement
+      (js_content) @injection.content
+      (#set! injection.language "javascript")
+      (#set! injection.combined))
+
+    (schema_statement
+      (json_content) @injection.content
+      (#set! injection.language "json")
+      (#set! injection.combined))
+
+    (style_statement
+      (style_content) @injection.content
+      (#set! injection.language "css")
+      (#set! injection.combined))
+
+    ((comment) @injection.content
+      (#set! injection.language "comment"))
 ]]
 
 vim.treesitter.query.set("liquid", "injections", liquid_injections)
