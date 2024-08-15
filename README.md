@@ -31,7 +31,7 @@ local liquid_injections = [[
      (#set-lang-by-filetype! "scss.liquid" "scss")
      (#set! injection.combined))
 
-     (javascript_statement
+    (javascript_statement
       (js_content) @injection.content
       (#set! injection.language "javascript")
       (#set! injection.combined))
