@@ -13,8 +13,20 @@ tree-sitter-liquid is included in [nvim-treesitter](https://github.com/nvim-tree
 
 -- custom query predicate for allowing injections based on file extension
 require"vim.treesitter.query".add_directive("set-lang-by-filetype!", function (_, _, bufnr, pred, metadata)
+    local function find_nth_dot_from_end(str, n)
+        for i = #str, 1, -1 do
+            if str:sub(i, i) == "." then
+                n = n - 1
+                if n <= 0 then
+                    return i
+                end
+            end
+        end
+        return nil
+    end
     local filename = vim.fn.expand("#"..bufnr..":t")
-    local extension_index = filename:find("%.")
+    local dots_in_extension = select(2, string.gsub(pred[2], "%.", "")) + 1
+    local extension_index = find_nth_dot_from_end(filename, dots_in_extension)
     if not extension_index then
         return
     end
