@@ -960,6 +960,11 @@
     }
   },
   {
+    "type": "front_matter",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "if_statement",
     "named": true,
     "fields": {
@@ -1505,6 +1510,7 @@
   {
     "type": "program",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -1568,6 +1574,10 @@
         },
         {
           "type": "form_statement",
+          "named": true
+        },
+        {
+          "type": "front_matter",
           "named": true
         },
         {
@@ -2219,6 +2229,10 @@
   },
   {
     "type": "-%}",
+    "named": false
+  },
+  {
+    "type": "---",
     "named": false
   },
   {

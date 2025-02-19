@@ -17,9 +17,9 @@ Multiline Inline Comment
 ==================
 
 <html>
-  {% 
+  {%
     # this is a comment
-    # render "string" %  
+    # render "string" %
     # :)
   %}
 </html>
@@ -73,7 +73,7 @@ Nested Comments
    (template_content))
 
 ==================
-Comment Error
+Two Comment Opened, One Unclosed
 ==================
 
 {% comment %}
@@ -81,8 +81,51 @@ Comment Error
 {% endcomment %}
 
 ---
-  (program
-   (ERROR))
+  (ERROR)
+
+==================
+Comment Opened and Unclosed
+==================
+
+{% comment %}
+
+---
+  (ERROR)
+
+==================
+Comment Closed Only
+==================
+{% endcomment %}
+---
+(program
+  (custom_unpaired_statement))
+
+==================
+One Comment Opened, Two Closed
+==================
+
+{% comment %}
+{% endcomment %}
+{% endcomment %}
+
+---
+(program
+  (comment)
+  (custom_unpaired_statement)
+  (template_content))
+
+==================
+Comment Opened and Unclosed with Template
+==================
+<html>
+{% comment %}
+<html/>
+
+---
+(program
+  (template_content)
+  (ERROR
+    (identifier)))
 
 ==================
 Liquid Inline Comment

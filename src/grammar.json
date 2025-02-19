@@ -1,13 +1,45 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "liquid",
   "word": "identifier",
   "rules": {
     "program": {
-      "type": "REPEAT",
-      "content": {
-        "type": "SYMBOL",
-        "name": "_node"
-      }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "front_matter"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_template_content_as_start"
+              },
+              "named": true,
+              "value": "template_content"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "comment"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_node"
+          }
+        }
+      ]
     },
     "_node": {
       "type": "CHOICE",
@@ -26,12 +58,62 @@
         }
       ]
     },
+    "front_matter": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "---"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\r\\n|\\r|\\n)"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^-].*|-[^-].*|-{2}[^-].*"
+              },
+              {
+                "type": "PATTERN",
+                "value": "(\\r\\n|\\r|\\n)"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "---"
+        }
+      ]
+    },
     "template_content": {
       "type": "CHOICE",
       "members": [
         {
           "type": "PATTERN",
           "value": "[^{]+|\\{[^{%]"
+        },
+        {
+          "type": "STRING",
+          "value": "{%%"
+        },
+        {
+          "type": "STRING",
+          "value": "{{{"
+        }
+      ]
+    },
+    "_template_content_as_start": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "([^-{]+|-[^-].*|-{2}[^-].*)|(\\{[^{%])"
         },
         {
           "type": "STRING",

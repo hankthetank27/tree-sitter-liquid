@@ -40,9 +40,17 @@ module.exports = grammar({
   rules: {
 
     program: ($) =>
-      repeat(
-        $._node,
+      seq(
+        choice(
+          $.front_matter,
+          alias($._template_content_as_start, $.template_content),
+          $._statement,
+          $.comment,
+          // alias($._comment_as_start, $.comment),
+        ),
+        repeat($._node),
       ),
+
 
     _node: ($) =>
       choice(
@@ -51,9 +59,30 @@ module.exports = grammar({
         $.comment,
       ),
 
+    front_matter: (_) =>
+      seq(
+        '---',
+        /(\r\n|\r|\n)/,
+        repeat(
+          seq(
+            /[^-].*|-[^-].*|-{2}[^-].*/,
+            /(\r\n|\r|\n)/,
+          ),
+        ),
+        '---',
+      ),
+
     template_content: (_) =>
       choice(
         /[^{]+|\{[^{%]/,
+        '{%%',
+        '{{{',
+      ),
+
+    // we want to avoid matching on a front_matter as the start token
+    _template_content_as_start: (_) =>
+      choice(
+        /([^-{]+|-[^-].*|-{2}[^-].*)|(\{[^{%])/,
         '{%%',
         '{{{',
       ),
