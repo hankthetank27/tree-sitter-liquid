@@ -60,15 +60,11 @@ bool tree_sitter_liquid_external_scanner_scan(
         int dash_count = 0;
         advance_ws(lexer);
 
-        // is this the right spot for this?...
-        lexer->mark_end(lexer);
-
         while (lexer->lookahead == '-') {
             dash_count++;
             advance(lexer);
         }
         if (dash_count != 3) return false;
-        // .... or is it here
 
         while (lexer->lookahead == ' ' || lexer->lookahead == '\t') {
             advance(lexer);
@@ -108,8 +104,15 @@ bool tree_sitter_liquid_external_scanner_scan(
                             return true;
                         }
                     }
+                    // otherwise consume rest of line
+                    while (lexer->lookahead != '\n' && lexer->lookahead != '\r' && !lexer->eof(lexer)) {
+                        advance(lexer);
+                    }
+                    // if end of file is reached, then this is not metadata
+                    if (lexer->eof(lexer)) {
+                        break;
+                    }
                 }
-
                 if (lexer->lookahead != '-') {
                     advance(lexer);
                 }

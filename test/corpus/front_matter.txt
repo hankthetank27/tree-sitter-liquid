@@ -6,7 +6,7 @@ prop: value
 ---
 ---\\\
 (program
-  (front_matter_data))
+  (front_matter))
 
 ==================\\\
 Front Matter Empty
@@ -15,7 +15,7 @@ Front Matter Empty
 ---
 ---\\\
 (program
-  (front_matter_data))
+  (front_matter))
 
 ==================\\\
 Front Matter With Value Staring Dashes
@@ -25,7 +25,7 @@ Front Matter With Value Staring Dashes
 ---
 ---\\\
 (program
-  (front_matter_data))
+  (front_matter))
 
 ==================\\\
 Malformed Front Matter Start Less Dashes
@@ -81,7 +81,7 @@ prop: 2
 <html/>
 ---\\\
 (program
-  (front_matter_data)
+  (front_matter)
   (template_content))
 
 ==================\\\
@@ -123,9 +123,29 @@ prop: value
 %}
 ---\\\
 (program
-  (front_matter_data)
+  (front_matter)
  (liquid_tag
   (form_statement
    (string)
    (echo_statement
     (string)))))
+
+==================\\\
+Front Matter With Valid Yaml
+==================\\\
+---
+title:  'This is the title: it contains a colon'
+author:
+- Author One
+- Author Two
+keywords: [nothing, nothingness]
+abstract: |
+  This is the abstract.
+
+  It consists of two paragraphs.
+---
+
+---\\\
+
+(program
+  (front_matter))

@@ -18,7 +18,7 @@ module.exports = grammar({
     $._paired_comment_content,
     $._paired_comment_content_liq,
     $.raw_content,
-    $.front_matter_data,
+    $.front_matter,
 
     // check if scanner is in error recovery mode
     $.error_sentinel,
@@ -42,8 +42,7 @@ module.exports = grammar({
 
     program: ($) =>
       seq(
-        // optional($._front_matter),
-        optional($.front_matter_data),
+        optional($.front_matter),
         repeat($._node),
       ),
 
@@ -54,15 +53,6 @@ module.exports = grammar({
         $.template_content,
         $.comment,
       ),
-
-    front_matter_delim: (_) => '---',
-
-    // _front_matter: ($) =>
-    //   seq(
-    //     // $.front_matter_delim,
-    //     $.front_matter_data,
-    //     // $.front_matter_delim,
-    //   ),
 
     template_content: (_) =>
       choice(

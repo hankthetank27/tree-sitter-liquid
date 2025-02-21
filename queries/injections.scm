@@ -14,5 +14,5 @@
   (#set! injection.language "javascript")
   (#set! injection.combined))
 
-((front_matter_data) @injection.content
+((front_matter) @injection.content
   (#set! injection.language "yaml"))

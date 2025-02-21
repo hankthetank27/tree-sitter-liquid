@@ -11,7 +11,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "front_matter_data"
+              "name": "front_matter"
             },
             {
               "type": "BLANK"
@@ -43,10 +43,6 @@
           "name": "comment"
         }
       ]
-    },
-    "front_matter_delim": {
-      "type": "STRING",
-      "value": "---"
     },
     "template_content": {
       "type": "CHOICE",
@@ -4406,7 +4402,7 @@
     },
     {
       "type": "SYMBOL",
-      "name": "front_matter_data"
+      "name": "front_matter"
     },
     {
       "type": "SYMBOL",

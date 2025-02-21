@@ -115,7 +115,7 @@ enum ts_symbol_identifiers {
   sym__paired_comment_content = 97,
   sym__paired_comment_content_liq = 98,
   sym_raw_content = 99,
-  sym_front_matter_data = 100,
+  sym_front_matter = 100,
   sym_error_sentinel = 101,
   sym_program = 102,
   sym__node = 103,
@@ -311,7 +311,7 @@ static const char * const ts_symbol_names[] = {
   [sym__paired_comment_content] = "_paired_comment_content",
   [sym__paired_comment_content_liq] = "_paired_comment_content_liq",
   [sym_raw_content] = "raw_content",
-  [sym_front_matter_data] = "front_matter_data",
+  [sym_front_matter] = "front_matter",
   [sym_error_sentinel] = "error_sentinel",
   [sym_program] = "program",
   [sym__node] = "_node",
@@ -507,7 +507,7 @@ static const TSSymbol ts_symbol_map[] = {
   [sym__paired_comment_content] = sym__paired_comment_content,
   [sym__paired_comment_content_liq] = sym__paired_comment_content_liq,
   [sym_raw_content] = sym_raw_content,
-  [sym_front_matter_data] = sym_front_matter_data,
+  [sym_front_matter] = sym_front_matter,
   [sym_error_sentinel] = sym_error_sentinel,
   [sym_program] = sym_program,
   [sym__node] = sym__node,
@@ -1003,7 +1003,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [sym_front_matter_data] = {
+  [sym_front_matter] = {
     .visible = true,
     .named = true,
   },
@@ -5763,7 +5763,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym__paired_comment_content] = ACTIONS(1),
     [sym__paired_comment_content_liq] = ACTIONS(1),
     [sym_raw_content] = ACTIONS(1),
-    [sym_front_matter_data] = ACTIONS(1),
+    [sym_front_matter] = ACTIONS(1),
     [sym_error_sentinel] = ACTIONS(1),
   },
   [1] = {
@@ -5798,7 +5798,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_LBRACE_PERCENT_DASH] = ACTIONS(9),
     [anon_sym_LBRACE_LBRACE] = ACTIONS(11),
     [anon_sym_LBRACE_LBRACE_DASH] = ACTIONS(11),
-    [sym_front_matter_data] = ACTIONS(13),
+    [sym_front_matter] = ACTIONS(13),
   },
   [2] = {
     [sym__liquid_node] = STATE(131),
@@ -31954,7 +31954,7 @@ enum ts_external_scanner_symbol_identifiers {
   ts_external_token__paired_comment_content = 1,
   ts_external_token__paired_comment_content_liq = 2,
   ts_external_token_raw_content = 3,
-  ts_external_token_front_matter_data = 4,
+  ts_external_token_front_matter = 4,
   ts_external_token_error_sentinel = 5,
 };
 
@@ -31963,7 +31963,7 @@ static const TSSymbol ts_external_scanner_symbol_map[EXTERNAL_TOKEN_COUNT] = {
   [ts_external_token__paired_comment_content] = sym__paired_comment_content,
   [ts_external_token__paired_comment_content_liq] = sym__paired_comment_content_liq,
   [ts_external_token_raw_content] = sym_raw_content,
-  [ts_external_token_front_matter_data] = sym_front_matter_data,
+  [ts_external_token_front_matter] = sym_front_matter,
   [ts_external_token_error_sentinel] = sym_error_sentinel,
 };
 
@@ -31973,11 +31973,11 @@ static const bool ts_external_scanner_states[7][EXTERNAL_TOKEN_COUNT] = {
     [ts_external_token__paired_comment_content] = true,
     [ts_external_token__paired_comment_content_liq] = true,
     [ts_external_token_raw_content] = true,
-    [ts_external_token_front_matter_data] = true,
+    [ts_external_token_front_matter] = true,
     [ts_external_token_error_sentinel] = true,
   },
   [2] = {
-    [ts_external_token_front_matter_data] = true,
+    [ts_external_token_front_matter] = true,
   },
   [3] = {
     [ts_external_token__inline_comment_content] = true,
