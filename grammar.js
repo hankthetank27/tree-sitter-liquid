@@ -18,6 +18,7 @@ module.exports = grammar({
     $._paired_comment_content,
     $._paired_comment_content_liq,
     $.raw_content,
+    $.front_matter,
 
     // check if scanner is in error recovery mode
     $.error_sentinel,
@@ -40,9 +41,11 @@ module.exports = grammar({
   rules: {
 
     program: ($) =>
-      repeat(
-        $._node,
+      seq(
+        optional($.front_matter),
+        repeat($._node),
       ),
+
 
     _node: ($) =>
       choice(

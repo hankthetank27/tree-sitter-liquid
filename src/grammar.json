@@ -1,13 +1,31 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "liquid",
   "word": "identifier",
   "rules": {
     "program": {
-      "type": "REPEAT",
-      "content": {
-        "type": "SYMBOL",
-        "name": "_node"
-      }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "front_matter"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_node"
+          }
+        }
+      ]
     },
     "_node": {
       "type": "CHOICE",
@@ -4381,6 +4399,10 @@
     {
       "type": "SYMBOL",
       "name": "raw_content"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "front_matter"
     },
     {
       "type": "SYMBOL",
