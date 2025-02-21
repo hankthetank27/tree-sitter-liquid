@@ -75,22 +75,20 @@ Nested Comments
 ==================
 Two Comment Opened, One Unclosed
 ==================
-
 {% comment %}
 {% comment %}
 {% endcomment %}
-
 ---
-  (ERROR)
+(program
+  (ERROR))
 
 ==================
 Comment Opened and Unclosed
 ==================
-
 {% comment %}
-
 ---
-  (ERROR)
+(program
+  (ERROR))
 
 ==================
 Comment Closed Only

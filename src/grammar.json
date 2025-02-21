@@ -11,24 +11,10 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "front_matter"
+              "name": "front_matter_data"
             },
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_template_content_as_start"
-              },
-              "named": true,
-              "value": "template_content"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_statement"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "comment"
+              "type": "BLANK"
             }
           ]
         },
@@ -58,38 +44,9 @@
         }
       ]
     },
-    "front_matter": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "---"
-        },
-        {
-          "type": "PATTERN",
-          "value": "(\\r\\n|\\r|\\n)"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "[^-].*|-[^-].*|-{2}[^-].*"
-              },
-              {
-                "type": "PATTERN",
-                "value": "(\\r\\n|\\r|\\n)"
-              }
-            ]
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "---"
-        }
-      ]
+    "front_matter_delim": {
+      "type": "STRING",
+      "value": "---"
     },
     "template_content": {
       "type": "CHOICE",
@@ -97,23 +54,6 @@
         {
           "type": "PATTERN",
           "value": "[^{]+|\\{[^{%]"
-        },
-        {
-          "type": "STRING",
-          "value": "{%%"
-        },
-        {
-          "type": "STRING",
-          "value": "{{{"
-        }
-      ]
-    },
-    "_template_content_as_start": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "([^-{]+|-[^-].*|-{2}[^-].*)|(\\{[^{%])"
         },
         {
           "type": "STRING",
@@ -4463,6 +4403,10 @@
     {
       "type": "SYMBOL",
       "name": "raw_content"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "front_matter_data"
     },
     {
       "type": "SYMBOL",

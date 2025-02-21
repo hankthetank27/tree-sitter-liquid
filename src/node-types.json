@@ -960,11 +960,6 @@
     }
   },
   {
-    "type": "front_matter",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "if_statement",
     "named": true,
     "fields": {
@@ -1577,7 +1572,7 @@
           "named": true
         },
         {
-          "type": "front_matter",
+          "type": "front_matter_data",
           "named": true
         },
         {
@@ -2232,10 +2227,6 @@
     "named": false
   },
   {
-    "type": "---",
-    "named": false
-  },
-  {
     "type": "-}}",
     "named": false
   },
@@ -2418,6 +2409,10 @@
   {
     "type": "form",
     "named": false
+  },
+  {
+    "type": "front_matter_data",
+    "named": true
   },
   {
     "type": "identifier",

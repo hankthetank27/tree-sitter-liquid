@@ -6,7 +6,7 @@ prop: value
 ---
 ---\\\
 (program
-  (front_matter))
+  (front_matter_data))
 
 ==================\\\
 Front Matter Empty
@@ -15,7 +15,7 @@ Front Matter Empty
 ---
 ---\\\
 (program
-  (front_matter))
+  (front_matter_data))
 
 ==================\\\
 Front Matter With Value Staring Dashes
@@ -25,7 +25,7 @@ Front Matter With Value Staring Dashes
 ---
 ---\\\
 (program
-  (front_matter))
+  (front_matter_data))
 
 ==================\\\
 Malformed Front Matter Start Less Dashes
@@ -35,19 +35,40 @@ prop: 1
 ---
 ---\\\
 (program
-  (template_content)
   (template_content))
 
 ==================\\\
 Malformed Front Matter End Less Dashes
 ==================\\\
---
+---
 prop: 1
 --
 ---\\\
 (program
-  (template_content)
   (template_content))
+
+==================\\\
+Front Matter With Three Dash Template Content
+==================\\\
+--- something
+prop: value
+---
+---\\\
+(program
+  (template_content))
+
+==================\\\
+Front Matter Trailing Dashes
+==================\\\
+---
+prop: value
+------
+<html>
+{{ hi }}
+---\\\
+(program
+ (template_content)
+ (identifier))
 
 ==================\\\
 Front Matter Followed By Template Content
@@ -60,7 +81,7 @@ prop: 2
 <html/>
 ---\\\
 (program
-  (front_matter)
+  (front_matter_data)
   (template_content))
 
 ==================\\\
@@ -73,7 +94,6 @@ prop: 1
 ---
 ---\\\
 (program
-  (template_content)
   (template_content))
 
 
@@ -103,7 +123,7 @@ prop: value
 %}
 ---\\\
 (program
-  (front_matter)
+  (front_matter_data)
  (liquid_tag
   (form_statement
    (string)

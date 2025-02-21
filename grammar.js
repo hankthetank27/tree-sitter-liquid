@@ -18,6 +18,7 @@ module.exports = grammar({
     $._paired_comment_content,
     $._paired_comment_content_liq,
     $.raw_content,
+    $.front_matter_data,
 
     // check if scanner is in error recovery mode
     $.error_sentinel,
@@ -41,13 +42,8 @@ module.exports = grammar({
 
     program: ($) =>
       seq(
-        choice(
-          $.front_matter,
-          alias($._template_content_as_start, $.template_content),
-          $._statement,
-          $.comment,
-          // alias($._comment_as_start, $.comment),
-        ),
+        // optional($._front_matter),
+        optional($.front_matter_data),
         repeat($._node),
       ),
 
@@ -59,30 +55,18 @@ module.exports = grammar({
         $.comment,
       ),
 
-    front_matter: (_) =>
-      seq(
-        '---',
-        /(\r\n|\r|\n)/,
-        repeat(
-          seq(
-            /[^-].*|-[^-].*|-{2}[^-].*/,
-            /(\r\n|\r|\n)/,
-          ),
-        ),
-        '---',
-      ),
+    front_matter_delim: (_) => '---',
+
+    // _front_matter: ($) =>
+    //   seq(
+    //     // $.front_matter_delim,
+    //     $.front_matter_data,
+    //     // $.front_matter_delim,
+    //   ),
 
     template_content: (_) =>
       choice(
         /[^{]+|\{[^{%]/,
-        '{%%',
-        '{{{',
-      ),
-
-    // we want to avoid matching on a front_matter as the start token
-    _template_content_as_start: (_) =>
-      choice(
-        /([^-{]+|-[^-].*|-{2}[^-].*)|(\{[^{%])/,
         '{%%',
         '{{{',
       ),

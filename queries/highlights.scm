@@ -7,6 +7,7 @@
   "%}"
   "{%-"
   "-%}"
+  ; (front_matter_delim)
   ] @tag.delimiter
  (#set! priority 101))
 
