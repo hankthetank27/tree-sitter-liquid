@@ -55,65 +55,64 @@ bool tree_sitter_liquid_external_scanner_scan(
 
     //front_matter
     if (valid_symbols[FRONT_MATTER]) {
-        int dash_count = 0;
-
-        while (lexer->lookahead == '-') {
-            dash_count++;
+        advance(lexer);
+        if (valid_symbols[FRONT_MATTER] && lexer->lookahead == '-') {
             advance(lexer);
-        }
-        if (dash_count != 3){
-            return false;
-        }
-
-        while (lexer->lookahead == ' ' || lexer->lookahead == '\t') {
+            if (lexer->lookahead != '-') {
+                return false;
+            }
             advance(lexer);
-        }
-
-        if (lexer->lookahead == '\n' || lexer->lookahead == '\r') {
-            if (lexer->lookahead == '\r') {
-                advance(lexer);
-                if (lexer->lookahead == '\n') advance(lexer);
-            } else {
+            while (lexer->lookahead == ' ' || lexer->lookahead == '\t') {
                 advance(lexer);
             }
-
-            while (lexer->lookahead != 0) {
-                if (lexer->lookahead == '-') {
-                    dash_count = 0;
-                    while (lexer->lookahead == '-') {
-                        dash_count++;
+            if (lexer->lookahead != '\n' && lexer->lookahead != '\r') {
+                return false;
+            }
+            for (;;) {
+                // advance over newline
+                if (lexer->lookahead == '\r') {
+                    advance(lexer);
+                    if (lexer->lookahead == '\n') {
                         advance(lexer);
                     }
-
-                    if (dash_count == 3) {
-                        while (lexer->lookahead == ' ' || lexer->lookahead == '\t') {
+                } else {
+                    advance(lexer);
+                }
+                // check for pluses
+                size_t dash_count = 0;
+                while (lexer->lookahead == '-') {
+                    dash_count++;
+                    advance(lexer);
+                }
+                if (dash_count == 3) {
+                    // if exactly 3 check if next symbol (after eventual
+                    // whitespace) is newline
+                    while (lexer->lookahead == ' ' || lexer->lookahead == '\t') {
+                        advance(lexer);
+                    }
+                    if (lexer->lookahead == '\n' || lexer->lookahead == '\r' || lexer->lookahead == 0) {
+                        // if so also consume newline
+                        if (lexer->lookahead == '\r') {
                             advance(lexer);
-                        }
-
-                        if (lexer->lookahead == '\n' || lexer->lookahead == '\r' || lexer->lookahead == 0) {
-                            if (lexer->lookahead == '\r') {
-                                advance(lexer);
-                                if (lexer->lookahead == '\n') advance(lexer);
-                            } else if (lexer->lookahead == '\n') {
+                            if (lexer->lookahead == '\n') {
                                 advance(lexer);
                             }
-
-                            lexer->mark_end(lexer);
-                            lexer->result_symbol = FRONT_MATTER;
-                            return true;
+                        } else {
+                            advance(lexer);
                         }
-                    }
-                    // otherwise consume rest of line
-                    while (lexer->lookahead != '\n' && lexer->lookahead != '\r' && !lexer->eof(lexer)) {
-                        advance(lexer);
-                    }
-                    // if end of file is reached, then this is not metadata
-                    if (lexer->eof(lexer)) {
-                        break;
+                        lexer->mark_end(lexer);
+                        lexer->result_symbol = FRONT_MATTER;
+                        return true;
                     }
                 }
-                if (lexer->lookahead != '-') {
+                // otherwise consume rest of line
+                while (lexer->lookahead != '\n' && lexer->lookahead != '\r' &&
+                    !lexer->eof(lexer)) {
                     advance(lexer);
+                }
+                // if end of file is reached, then this is not metadata
+                if (lexer->eof(lexer)) {
+                    break;
                 }
             }
         }

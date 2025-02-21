@@ -71,6 +71,26 @@ prop: value
  (identifier))
 
 ==================\\\
+Front Matter First Line Starts With Space
+==================\\\
+ ---
+prop: value
+---
+---\\\
+(program
+  (template_content))
+
+==================\\\
+Front Matter Second Line Starts With Space
+==================\\\
+---
+prop: value
+ ---
+---\\\
+(program
+  (template_content))
+
+==================\\\
 Front Matter Followed By Template Content
 ==================\\\
 ---
