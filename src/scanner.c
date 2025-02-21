@@ -53,18 +53,17 @@ bool tree_sitter_liquid_external_scanner_scan(
         return false;
     }
 
-    advance_ws(lexer);
-
     //front_matter
     if (valid_symbols[FRONT_MATTER]) {
         int dash_count = 0;
-        advance_ws(lexer);
 
         while (lexer->lookahead == '-') {
             dash_count++;
             advance(lexer);
         }
-        if (dash_count != 3) return false;
+        if (dash_count != 3){
+            return false;
+        }
 
         while (lexer->lookahead == ' ' || lexer->lookahead == '\t') {
             advance(lexer);
@@ -121,6 +120,8 @@ bool tree_sitter_liquid_external_scanner_scan(
 
         return false;
     }
+
+    advance_ws(lexer);
 
     // inline comment
     if (valid_symbols[INLINE_COMMENT_CONTENT]) {
