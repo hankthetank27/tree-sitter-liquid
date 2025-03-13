@@ -10,6 +10,8 @@ Liquid grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
 tree-sitter-liquid is included in [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) and will work out of the box with any files using the `.liquid` extension, injecting HTML over the template file. That being said, liquid also allows for templating in JavaScript, CSS, and SCSS files using the `.js.liquid` `.css.liquid` and `.scss.liquid` file extensions. Since in nvim-treesitter there is no way to distinguish and inject different languages depending on the extension, you can optionally add the following custom query and injections to your neovim configuration to add the correct highlighting for these additional file types.
 
 ``` lua
+-- compatibility shim for breaking change on nightly/0.11
+local opts = vim.fn.has "nvim-0.10" == 1 and { force = true, all = false } or true
 
 -- custom query predicate for allowing injections based on file extension
 require"vim.treesitter.query".add_directive("set-lang-by-filetype!", function (_, _, bufnr, pred, metadata)
@@ -33,7 +35,7 @@ require"vim.treesitter.query".add_directive("set-lang-by-filetype!", function (_
     if pred[2] == filename:sub(extension_index + 1) then
         metadata["injection.language"] = pred[3]
     end
-end, true)
+end, opts)
 
 local liquid_injections = [[
     ((template_content) @injection.content
@@ -57,6 +59,11 @@ local liquid_injections = [[
       (style_content) @injection.content
       (#set! injection.language "css")
       (#set! injection.combined))
+
+    ((front_matter) @injection.content
+      (#set! injection.language "yaml")
+      (#offset! @injection.content 1 0 -1 0)
+      (#set! injection.include-children))
 
     ((comment) @injection.content
       (#set! injection.language "comment"))
