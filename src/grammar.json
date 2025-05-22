@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "liquid",
   "word": "identifier",
   "rules": {
@@ -45,21 +44,24 @@
       ]
     },
     "template_content": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "[^{]+|\\{[^{%]"
-        },
-        {
-          "type": "STRING",
-          "value": "{%%"
-        },
-        {
-          "type": "STRING",
-          "value": "{{{"
-        }
-      ]
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[^{]+|\\{[^{%]"
+          },
+          {
+            "type": "STRING",
+            "value": "{%%"
+          },
+          {
+            "type": "STRING",
+            "value": "{{{"
+          }
+        ]
+      }
     },
     "_statement": {
       "type": "CHOICE",
@@ -4337,6 +4339,9 @@
     ],
     [
       "when_clause"
+    ],
+    [
+      "template_content"
     ],
     [
       "custom_unpaired_statement",

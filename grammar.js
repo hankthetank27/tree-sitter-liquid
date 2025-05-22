@@ -10,6 +10,7 @@ module.exports = grammar({
     [$.else_clause],
     [$.elsif_clause],
     [$.when_clause],
+    [$.template_content],
     [$.custom_unpaired_statement, $._expression],
   ],
 
@@ -55,10 +56,12 @@ module.exports = grammar({
       ),
 
     template_content: (_) =>
-      choice(
-        /[^{]+|\{[^{%]/,
-        '{%%',
-        '{{{',
+      repeat1(
+        choice(
+          /[^{]+|\{[^{%]/,
+          '{%%',
+          '{{{',
+        ),
       ),
 
     _statement: ($) =>
