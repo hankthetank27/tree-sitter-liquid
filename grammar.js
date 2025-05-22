@@ -459,7 +459,7 @@ module.exports = grammar({
     schema_statement: ($) =>
       seq(
         tag('schema'),
-        repeat(alias($.template_content, $.json_content)),
+        alias($.template_content, $.json_content),
         tag('endschema'),
       ),
 
@@ -482,6 +482,7 @@ module.exports = grammar({
         tag('javascript'),
         repeat(
           choice(
+            $._statement,
             alias($.template_content, $.js_content),
             $.comment,
           ),

@@ -3764,16 +3764,13 @@
           ]
         },
         {
-          "type": "REPEAT",
+          "type": "ALIAS",
           "content": {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "template_content"
-            },
-            "named": true,
-            "value": "json_content"
-          }
+            "type": "SYMBOL",
+            "name": "template_content"
+          },
+          "named": true,
+          "value": "json_content"
         },
         {
           "type": "SEQ",
@@ -3955,6 +3952,10 @@
           "content": {
             "type": "CHOICE",
             "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_statement"
+              },
               {
                 "type": "ALIAS",
                 "content": {
