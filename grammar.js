@@ -10,6 +10,7 @@ module.exports = grammar({
     [$.else_clause],
     [$.elsif_clause],
     [$.when_clause],
+    [$.template_content],
     [$.custom_unpaired_statement, $._expression],
   ],
 
@@ -55,10 +56,12 @@ module.exports = grammar({
       ),
 
     template_content: (_) =>
-      choice(
-        /[^{]+|\{[^{%]/,
-        '{%%',
-        '{{{',
+      repeat1(
+        choice(
+          /[^{]+|\{[^{%]/,
+          '{%%',
+          '{{{',
+        ),
       ),
 
     _statement: ($) =>
@@ -456,7 +459,7 @@ module.exports = grammar({
     schema_statement: ($) =>
       seq(
         tag('schema'),
-        repeat(alias($.template_content, $.json_content)),
+        alias($.template_content, $.json_content),
         tag('endschema'),
       ),
 
@@ -479,6 +482,7 @@ module.exports = grammar({
         tag('javascript'),
         repeat(
           choice(
+            $._statement,
             alias($.template_content, $.js_content),
             $.comment,
           ),

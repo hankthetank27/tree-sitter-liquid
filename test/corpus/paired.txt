@@ -622,7 +622,6 @@ Schema
 ---
 (program
  (schema_statement
-  (json_content)
   (json_content))
  (template_content))
 
@@ -637,8 +636,6 @@ Style
 ---
 (program
   (style_statement
-   (style_content)
-   (style_content)
    (style_content))
  (template_content))
 
@@ -656,8 +653,6 @@ Style with Liquid
 ---
 (program
   (style_statement
-    (style_content)
-    (style_content)
     (style_content)
     (access
       (identifier)

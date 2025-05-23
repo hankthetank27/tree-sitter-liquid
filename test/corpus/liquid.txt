@@ -304,3 +304,157 @@ Liquid Custom Tag
         (string)))))
    (template_content))
 
+==================
+Large Combined Section
+==================
+{% liquid
+  assign enable = section.settings.enable
+  assign color = section.settings.color
+%}
+
+<style>
+  #{{ section.id }} {
+    --color: {{ section.settings.color }};
+  }
+
+  #{{ section.id }} .block-container {
+    --section-color: var(--color);
+  }
+</style>
+
+{% style %}
+  #{{ section.id }} {
+    --color: {{ section.settings.color }};
+  }
+
+  #{{ section.id }} .block-container {
+    --section-color: var(--color);
+    --var: rgb(255 255 255);
+  }
+{% endstyle %}
+
+<script>
+  console.log({{ section.settings.enable | json }});
+</script>
+
+{% javascript %}
+  console.log({{ section.settings.enable | json }});
+{% endjavascript %}
+
+<section>
+  {% for block in section.blocks %}
+    {% render 'block', block: block %}
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "Test section",
+  "settings": [
+    {
+      "id": "enable",
+      "type": "checkbox",
+      "label": "Enable"
+    },
+    {
+      "id": "color",
+      "type": "color",
+      "label": "Color"
+    },
+    {
+      "id": "test",
+      "type": "checkbox",
+      "label": "Test",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Test section"
+    }
+  ]
+}
+{% endschema %}
+---
+(program
+  (liquid_tag
+    (assignment_statement
+      (identifier)
+      (access
+        (access
+          (identifier)
+          (identifier))
+        (identifier)))
+    (assignment_statement
+      (identifier)
+      (access
+        (access
+          (identifier)
+          (identifier))
+        (identifier))))
+  (template_content)
+  (access
+    (identifier)
+    (identifier))
+  (template_content)
+  (access
+    (access
+      (identifier)
+      (identifier))
+    (identifier))
+  (template_content)
+  (access
+    (identifier)
+    (identifier))
+  (template_content)
+  (style_statement
+    (style_content)
+    (access
+      (identifier)
+      (identifier))
+    (style_content)
+    (access
+      (access
+        (identifier)
+        (identifier))
+      (identifier))
+    (style_content)
+    (access
+      (identifier)
+      (identifier))
+    (style_content))
+  (template_content)
+  (filter
+    (access
+      (access
+        (identifier)
+        (identifier))
+      (identifier))
+    (identifier))
+  (template_content)
+  (javascript_statement
+    (js_content)
+    (filter
+      (access
+        (access
+          (identifier)
+          (identifier))
+        (identifier))
+      (identifier))
+    (js_content))
+  (template_content)
+  (for_loop_statement
+    (identifier)
+    (access
+      (identifier)
+      (identifier))
+    (block
+      (render_statement
+        (string)
+        (argument_list
+          (argument
+            (identifier)
+            (identifier))))))
+  (template_content)
+  (schema_statement
+    (json_content)))
